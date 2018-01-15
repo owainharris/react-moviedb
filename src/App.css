@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #111;
+  height: 60px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.subDetails {
+  font-weight: bold;
+}
+
+.synopsis {
+  font-weight: bold;
+  padding: 20px 0px 5px;
+}
+
+.container {
+  position: absolute;
+}
+
+.containerLeft {
+  width: 50%;
+  float: left;
+  position: relative;
+}
+
+.containerRight {
+  width: 40%;
+  float: right;
+  position: relative;
+}
+
+.elCslz {
+  height: 350px;
+}
