@@ -31,17 +31,24 @@
 }
 
 .containerLeft {
-  width: 50%;
+  width: 45%;
   float: left;
   position: relative;
 }
 
 .containerRight {
-  width: 40%;
+  width: 50%;
   float: right;
   position: relative;
+  text-align: center;
 }
 
 .elCslz {
   height: 350px;
+}
+
+.sectionTitle {
+  color: white;
+  text-align: left;
+  padding: 30px 0 0 30px;
 }

@@ -6,19 +6,19 @@ import Overdrive from 'react-overdrive';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 
-const Movie = ({ movie }) => (
-  <Link to={`/MovieDetail/${movie.id}`}>
-    <Overdrive id={movie.id}>
-      <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+const Show = ({ show }) => (
+  <Link to={`/ShowDetail/${show.id}`}>
+    <Overdrive id={show.id}>
+      <Poster src={`${POSTER_PATH}${show.poster_path}`} alt={show.title} />
     </Overdrive>
   </Link>
 );
 
-export default Movie;
+export default Show;
 
-Movie.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+Show.propTypes = {
+  show: PropTypes.shape({
+    name: PropTypes.string.isRequired,
     backdrop_path: PropTypes.string.isRequired,
   }).isRequired,
 };

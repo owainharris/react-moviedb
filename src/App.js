@@ -13,6 +13,7 @@ import './App.css';
 
 import MoviesList from './components/MoviesList';
 import MovieDetail from './components/MovieDetail';
+import ShowDetail from './components/ShowDetail';
 
 const App = () => (
   <Router>
@@ -23,7 +24,8 @@ const App = () => (
         </Link>
       </header>
       <Route exact path="/" component={MoviesList} />
-      <Route path="/:id" component={MovieDetail} />
+      <Route exact path="/MovieDetail/:id" component={MovieDetail} />
+      <Route exact path="/ShowDetail/:id" component={ShowDetail} />
     </div>
   </Router>
 );
