@@ -2,29 +2,39 @@
    eslint Unexpected console statement: 0
 */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
 import { Poster } from './Movie';
+import Season from './Season';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
 
-class ShowDetail extends Component {
+class ShowDetail extends PureComponent {
   state = {
     show: {},
+    seasons: [],
   }
 
   async componentDidMount() {
     try {
-      const res2 = await fetch(`https://api.themoviedb.org/3/tv/${this.props.match.params.id}?api_key=6d6bfb73cf9249c6823b66d288187dd8&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`);
-	  const show = await res2.json();
-	  console.log(show);
+      const showList = await fetch(`https://api.themoviedb.org/3/tv/${this.props.match.params.id}?api_key=6d6bfb73cf9249c6823b66d288187dd8&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`);
+      const show = await showList.json();
+      const seasons = show.seasons.map(season => (
+        {
+          id: season.id,
+          air_date: season.air_date,
+          poster_path: season.poster_path,
+          number: season.season_number,
+        }
+	  ));
       this.setState({
         show,
+        seasons,
       });
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -44,10 +54,14 @@ class ShowDetail extends Component {
             <p>{this.state.show.overview}</p>
           </div>
         </ShowInfo>
+        <SeasonsGrid>
+          {this.state.seasons.map(season => <Season key={season.id} movie={season} />)}
+        </SeasonsGrid>
       </ShowWrapper>
     );
   }
 }
+
 
 export default ShowDetail;
 
@@ -56,7 +70,7 @@ const ShowWrapper = styled.div`
   containerRight: text-align: center;
   padding-top: 50vh;
   background: url(${props => props.backdrop}) no-repeat;
-  background-size: cover;
+  background-size: 100%;
 `;
 
 const ShowInfo = styled.div`
@@ -71,4 +85,12 @@ const ShowInfo = styled.div`
     position: relative;
     top: -5rem;
   }
+`;
+
+const SeasonsGrid = styled.div`
+  background: white;
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(4,1fr);
+  grid-row-gap: 1rem;
 `;

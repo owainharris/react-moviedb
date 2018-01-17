@@ -18,7 +18,7 @@ export default Show;
 
 Show.propTypes = {
   show: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     backdrop_path: PropTypes.string.isRequired,
   }).isRequired,
 };

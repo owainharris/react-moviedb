@@ -2,7 +2,7 @@
    eslint Unexpected console statement: 0
 */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import YouTube from 'react-youtube';
 import Overdrive from 'react-overdrive';
@@ -11,7 +11,7 @@ import { Poster } from './Movie';
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
 
-class MovieDetail extends Component {
+class MovieDetail extends PureComponent {
   state = {
     movie: {},
   }
@@ -26,8 +26,8 @@ class MovieDetail extends Component {
         movie,
         youtubePrefix,
       });
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
   }
 

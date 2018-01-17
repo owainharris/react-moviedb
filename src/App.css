@@ -27,7 +27,7 @@
 }
 
 .container {
-  position: absolute;
+  position: relative;
 }
 
 .containerLeft {
