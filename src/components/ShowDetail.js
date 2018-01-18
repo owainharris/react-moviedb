@@ -89,7 +89,7 @@ const ShowInfo = styled.div`
 `;
 
 const SeasonsGrid = styled.div`
-  background: white;
+  background-color: white;
   display: grid;
   padding: 1rem;
   grid-template-columns: repeat(4,1fr);

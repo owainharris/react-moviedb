@@ -75,7 +75,7 @@ const MovieWrapper = styled.div`
   containerRight: text-align: center;
   padding-top: 50vh;
   background: url(${props => props.backdrop}) no-repeat;
-  background-size: cover;
+  background-size: 100%;
 `;
 
 const MovieInfo = styled.div`
