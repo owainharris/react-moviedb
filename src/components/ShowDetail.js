@@ -26,9 +26,10 @@ class ShowDetail extends PureComponent {
           id: season.id,
           air_date: season.air_date,
           poster_path: season.poster_path,
-          number: season.season_number,
+          number: season.season_number + 1,
         }
-	  ));
+      ));
+      console.log(seasons);
       this.setState({
         show,
         seasons,
