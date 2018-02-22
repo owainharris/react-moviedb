@@ -13,9 +13,7 @@ const Movie = ({ movie }) => (
     </Overdrive>
   </Link>
 );
-
 export default Movie;
-
 Movie.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
