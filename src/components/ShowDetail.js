@@ -1,3 +1,4 @@
+/* eslint linebreak-style: ["error", "windows"] */
 /* eslint react/no-did-mount-set-state: 0,
    eslint Unexpected console statement: 0
 */
