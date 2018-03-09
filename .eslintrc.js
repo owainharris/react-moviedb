@@ -23,6 +23,13 @@ module.exports = {
     "extends": "airbnb",
     "rules": {
       "react/jsx-filename-extension": 0,
-      "function-paren-newline": 0
+      "linebreak-style": ["error", "windows"],
+      "react/no-did-mount-set-state": 0,
+      "no-console": ["warn", { allow: [] }],
+      "function-paren-newline": 0,
+      "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+      }]
     }
   };

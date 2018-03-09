@@ -1,7 +1,3 @@
-/* eslint react/no-did-mount-set-state: 0,
-   eslint Unexpected console statement: 0
-*/
-
 import React from 'react';
 import {
   BrowserRouter as Router,

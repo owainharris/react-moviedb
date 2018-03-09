@@ -41,23 +41,29 @@ class ShowDetail extends PureComponent {
   }
 
   render() {
-    const { show } = this.state;
+    const { show, seasons } = this.state;
     return (
       <ShowWrapper backdrop={`${BACKDROP_PATH}${show.backdrop_path}`}>
         <ShowInfo>
+
           <Overdrive id={show.id}>
-            <Poster src={`${POSTER_PATH}${show.poster_path}`} alt={this.state.show.title} />
+            <Poster src={`${POSTER_PATH}${show.poster_path}`} alt={show.title} />
           </Overdrive>
-          <div>
-            <h1>{this.state.show.title}</h1>
-            <p><span className="subDetails">Release Date: </span> {this.state.show.first_air_date}</p>
-            <p><span className="subDetails">Rating: </span> {this.state.show.vote_average}</p>
-            <p className="synopsis">Synopsis:</p>
-            <p>{this.state.show.overview}</p>
-          </div>
+
+          <DetailsDiv>
+            <h1>{show.title}</h1>
+            <p><span className="subDetails">Release Date: </span> {show.first_air_date}</p>
+            <p><span className="subDetails">Rating: </span> {show.vote_average}</p>
+          </DetailsDiv>
+
+          <Synopsis>
+          <h3>Synopsis:</h3>
+          <p>{show.overview}</p>
+          </Synopsis>
+
         </ShowInfo>
         <SeasonsGrid>
-          {this.state.seasons.map(season => <Season key={season.id} movie={season} />)}
+          {seasons.map(season => <Season key={season.id} movie={season} />)}
         </SeasonsGrid>
       </ShowWrapper>
     );
@@ -68,31 +74,38 @@ class ShowDetail extends PureComponent {
 export default ShowDetail;
 
 const ShowWrapper = styled.div`
-  position: relative;
-  containerRight: text-align: center;
-  padding-top: 50vh;
-  background: url(${props => props.backdrop}) no-repeat;
-  background-size: 100%;
+position: relative;
+padding-top: 50vh;
+background: url(${props => props.backdrop}) no-repeat;
+background-size: 100%;
 `;
 
 const ShowInfo = styled.div`
-  background: white;
+display: grid;
+grid-gap: 30px;
+grid-template-rows: repeat(auto-fit, 150px);
+grid-template-columns: repeat(auto-fit, 150px 1fr);
   text-align: left;
   padding: 2rem 10%;
-  display: flex;
-  > div {
-    margin-left: 20px;
-  }
+  background: white;
   img {
     position: relative;
     top: -5rem;
   }
 `;
 
+const DetailsDiv = styled.div`
+grid-column: 2 / span 3;
+`;
+
+const Synopsis = styled.div`
+grid-column: 1 / span 2;
+`;
+
+
 const SeasonsGrid = styled.div`
-  background-color: white;
-  display: grid;
-  padding: 1rem;
-  grid-template-columns: repeat(4,1fr);
-  grid-row-gap: 1rem;
+background: white;
+display: grid;
+grid-gap: 10px;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 `;

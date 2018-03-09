@@ -1,25 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, CardText } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 let IMG_PATH = '';
 
-const Season = (show) => {
-  if (show.movie.poster_path != null) {
-    IMG_PATH = `${POSTER_PATH}${show.movie.poster_path}`;
+const Related = (related) => {
+  if (related.movie.poster_path != null) {
+    IMG_PATH = `${POSTER_PATH}${related.movie.poster_path}`;
   } else {
     IMG_PATH = 'https://cdn.browshot.com/static/images/not-found.png';
   }
   return (
     <MuiThemeProvider>
       <Card>
-        <SeasonPoster src={`${IMG_PATH}`} alt={show.movie.title} />
-        <h3>Season {show.movie.number}</h3>
-        <CardText>
-          Aired: {show.movie.air_date}
-        </CardText>
+        <SeasonPoster src={`${IMG_PATH}`} alt={related.movie.title} />
+        <h3>{related.movie.title}</h3>
       </Card>
     </MuiThemeProvider>
   );
@@ -27,7 +24,7 @@ const Season = (show) => {
 
 
 
-export default Season;
+export default Related;
 
 export const SeasonPoster = styled.img`
   box-shadow: 0 0 35px black;
